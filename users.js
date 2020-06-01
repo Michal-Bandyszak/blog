@@ -17,7 +17,7 @@ const addUser = () =>
     headers:  {
       "Content-Type": "application"
     }
-  })
+  }).catch(handleError)
 
 getAllUsers()
 
