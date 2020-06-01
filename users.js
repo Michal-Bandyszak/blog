@@ -1,15 +1,7 @@
-const table = document.querySelector("#usersTable");
-const usersTableBody = document.querySelector("#usersTable__body")
+import { handleError } from './modules/handleError.js';
+import { userComponent } from './modules/userComponent.js';
 
-const handleError = (error) => {
-  console.log(error);
-}
-
-const getHTMLElement = (str) => {
-	const parser = new DOMParser();	
-	const childNodes = parser.parseFromString(str, "text/html").body.childNodes;
-	return childNodes.length > 0 ? childNodes[0] : document.createElement("div");
-};
+const btnAddUserModal = document.getElementById("btnAddUserModal");
 
 const getAllUsers = () => 
   fetch("http://localhost:8090/v1/users/get")
@@ -18,23 +10,18 @@ const getAllUsers = () =>
       res.data.forEach(userComponent)
     }).catch(handleError)
   
-  
+
+const addUser = () => 
+  fetch("http://localhost:8090/v1/users/add", {
+    method: "POST",
+    headers:  {
+      "Content-Type": "application"
+    }
+  })
+
 getAllUsers()
 
+btnAddUserModal.addEventListener("click", () => {
+  $('#newUser').modal('show').find('textarea,input').val('');
 
-const userComponent = (user, index) => {
-  const row = [
-    user.name,
-    user.surname,
-    user.email,
-    user.gender,
-    `<div><button class="btn-edit fas fa-edit"></button><button class="btn-del fas fa-trash"></button></div>`
-  ]
-
-  const tableRow = usersTableBody.insertRow(index);
-  const tableContent = row.map((value) => getHTMLElement(value));
-
-  tableContent.forEach((cell, index) => {
-   tableRow.insertCell(index).appendChild(cell)
- })
-}
+})
