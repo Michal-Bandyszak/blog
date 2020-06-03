@@ -5,6 +5,9 @@ const btnAddUserModal = document.getElementById("btnAddUserModal");
 const tbody = document.getElementById("usersTable__body")
 
 
+  const users = [];
+    
+
 const getAllUsers = () => 
   fetch("http://localhost:8090/v1/users/get")
     .then(res => res.json())
@@ -13,6 +16,7 @@ const getAllUsers = () =>
     }).catch(handleError)
   
 
+// users.forEach(userComponent(user, index))
 const addUser = (user) => 
   fetch("http://localhost:8090/v1/users/add", {
     method: "POST",
@@ -27,16 +31,6 @@ const addUser = (user) =>
     tbody.innerHTML = "";
     getAllUsers()
   }
-
- const deleteUser = (id) => {
-	fetch(`http://localhost:8090/v1/users/delete/${id}`, {
-		method: "DELETE",
-		headers: {
-	 		"Content-Type": "application/json"
-		}
-	}).then(res => res.json())
-		.catch(handleError)
- }
 
   document.forms.formAdd.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -59,10 +53,10 @@ btnAddUserModal.addEventListener("click", () => {
   $('#newUser').modal('show').find('textarea,input').val('');
 });
 
-
 // deleteButton.addEventListener("click", () => console.log("buu"))
 // wakeDeleteModal.addEventListener("click", () => {
 //   console.log("hej")
 //  
 // })
+
 showUsers()
