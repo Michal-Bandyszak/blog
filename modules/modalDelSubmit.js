@@ -9,7 +9,8 @@ export class Modal{
 
 	setData(user) {
 		this.data = user;
-		///
+		
+		// console.log(user.id)
 	}
 
 	showModal() {
@@ -19,10 +20,8 @@ export class Modal{
 	hideModal() {
 		this.element.modal('hide').find('textarea,input').val('');
 	}
-	
 
-	onDelete(cb) {
-		// deleteUser(id);
-		cb();
+	onDelete() {
+		deleteUser(this.data.id)
 	} 
 }

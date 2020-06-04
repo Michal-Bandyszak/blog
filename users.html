@@ -6,93 +6,119 @@
   <title>users</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/c7be0e60d2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
-  <main class="container">
-    <section class="">
-      <h1>users management</h1>
-      <button id="btnAddUserModal" class="btn btn-primary">Add User</button>
-    </section>
-  <!--Add user modal-->
-    <section class="modals">
-      <div class="newUserModal modal fade" id="newUser" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">New User</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form id="formAdd">
-                <div class="form-row newUser__first--row">
-                  <div class="form-group col-md-6">
-                    <input type="text" class="form-control" placeholder="First name" name="name">
+  <div class="wrapper">
+    <!-- Sidebar -->
+    <nav id="sidebar">
+        <div class="sidebar-header">
+            <h3>Sidebar</h3>
+        </div>
+
+        <ul class="list-unstyled components">
+            <li >
+                <a href="index.html">Home</a>
+            </li>
+            <li>
+                <a href="users.html">Users</a>
+            </li>
+            <li>
+              <a href="posts.html">Posts</a>
+            </li>
+            <li>
+                <a href="tags.html">Tags</a>
+            </li>
+        </ul>
+    </nav>
+    <main class="container">
+      <section class="row">
+        <h1 class="col-10">users management</h1>
+        <button id="btnAddUserModal" class="btn btn-primary col-1">Add User</button>
+      </section>
+    <!--Add user modal-->
+      <section class="modals">
+        <div class="newUserModal modal fade" id="newUser" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">New User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formAdd">
+                  <div class="form-row newUser__first--row">
+                    <div class="form-group col-md-6">
+                      <input type="text" class="form-control" placeholder="First name" name="name">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input type="text" class="form-control" placeholder="Last name" name="surname">
+                    </div>
+                    <div class="col">
+                      <input type="email" class="form-control" placeholder="Email" name="email">
+                    </div> 
+                    <div class="col">
+                      <input type="number" maxlength="1" class="form-control" placeholder="Gender" name="gender">
+                    </div>
                   </div>
-                  <div class="form-group col-md-6">
-                    <input type="text" class="form-control" placeholder="Last name" name="surname">
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Create user</button>
                   </div>
-                  <div class="col">
-                    <input type="email" class="form-control" placeholder="Email" name="email">
-                  </div> 
-                  <div class="col">
-                    <input type="text" class="form-control" placeholder="Gender" name="gender">
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Create user</button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-       <table id="usersTable" class="table">
-         <thead>
-             <tr>
-               <th><input disabled type="checkbox" ></th>
-               <th>name</th> 
-               <th>surnname</th> 
-               <th>email</th>
-               <th>gender</th>
-               <th>actions</th>
-             </tr>
-         </thead>
-         <tbody id="usersTable__body">
-   
-         </tbody>
-       </table>
-      </div>
-    </section>
-
-    <section class="modals">
-      <div id="deleteModal" class="deleteModal modal fade" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Are you sure you want do delete user?</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">	
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                  <button id="modalButtonDelete" type="submit" class="btn btn-primary ">Delete</button>
-                </div>				
+      </section>
+  
+      <section>
+        <div class="container">
+         <table id="usersTable" class="table">
+           <thead>
+               <tr>
+                 <th><input disabled type="checkbox" ></th>
+                 <th>name</th> 
+                 <th>surnname</th> 
+                 <th>email</th>
+                 <th>gender</th>
+                 <th>actions</th>
+                 <th>login user</th>
+               </tr>
+           </thead>
+           <tbody id="usersTable__body">
+     
+           </tbody>
+         </table>
+        </div>
+      </section>
+  
+      <section class="modals">
+        <div id="deleteModal" class="deleteModal modal fade" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Are you sure you want do delete user?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">	
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button id="modalButtonDelete" type="submit" class="btn btn-primary ">Delete</button>
+                  </div>				
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+  
+    </main>
 
-  </main>
+</div>
   <!-- BOOTSTRAP -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

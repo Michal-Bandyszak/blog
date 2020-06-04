@@ -21,7 +21,7 @@ const addUser = (user) =>
   fetch("http://localhost:8090/v1/users/add", {
     method: "POST",
     headers:  {
-      "Content-Type": "application"
+      "Content-Type": "application/json"
     },
     body: JSON.stringify(user),
 	}).then(res => res.json())
@@ -38,9 +38,9 @@ const addUser = (user) =>
   
     const data = Object.entries(body).reduce((prev, actual) => {
       const [key, value] = actual;
-      if(key === 'gender') {
-        return { ...prev, [key]: +value }
-      };
+        if(key === 'gender') {
+          return { ...prev, [key]: +value }
+        };
       
       return { ...prev, [key]: value };
       
