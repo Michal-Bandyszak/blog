@@ -1,8 +1,9 @@
 import { getHTMLElement } from './parsehtml.js'
 import { Modal } from './modalDelSubmit.js'
 
+const modal = new Modal()
+
 export const userComponent = (user, index) => {
-  let modal = new Modal(user.id)
   const usersTableBody = document.querySelector("#usersTable__body")
   const row = [
     `<div><input type="checkbox"></div>`,
@@ -22,54 +23,16 @@ export const userComponent = (user, index) => {
   const deleteButton = tr.querySelector(".btn-del");
   
   deleteButton.addEventListener("click", () => {
-    // $('#deleteModal').modal('show').find('textarea,input').val('');
-    modal.showModal()
+    modal.setData(user);
+    modal.showModal();
   })
 
+  const btnDel = document.getElementById("modalButtonDelete")
+  btnDel.addEventListener("click", () => {
+       
+      modal.hideModal()
+    })
 }
-
-
-
-
-
-
-
-
-
-
-
-
-// const btnDel = document.getElementById("modalButtonDelete")
-//  btnDel.addEventListener("click", () => {
-//     funkcja(Modal)
-//   })
-
-  // const funkcja = (modal) => {
-  //   modal.showUSer()
-  //   $('#deleteModal').modal('hide').find('textarea,input').val('');
-  // }
-
-// modal.onDelete()
-
-
-
-
-
-// btnDel.addEventListener("click", () => {
-//   funkcja()
-// })
-// const funkcja = () => {
-//   modal.showUSer()
-//   $('#deleteModal').modal('hide').find('textarea,input').val('');
-// }
-
-
-
-
-
-
-
-
 
 
 // const btnDel = document.getElementById("modalButtonDelete");

@@ -1,33 +1,28 @@
 import { deleteUser } from './deleteUser.js';
 
 export class Modal{
-	constructor(id){
-		this.id = id
+	constructor(){
+		this.element = $('#deleteModal');
+		this.buttonDel = $('#modalButtonDelete')
+		this.data = null;
+	}
+
+	setData(user) {
+		this.data = user;
+		///
 	}
 
 	showModal() {
-		$('#deleteModal').modal('show').find('textarea,input').val('');
-	}
-	
-	showUSer() {
-		console.log("hej")
+		this.element.modal('show').find('textarea,input').val('');
 	}
 
-	onDelete(id) {
-			console.log("hej")
-			console.log(id)
-			//  deleteUser(id)//.then(showUsers)
-			$('#deleteModal').modal('hide').find('textarea,input').val('');
+	hideModal() {
+		this.element.modal('hide').find('textarea,input').val('');
+	}
 	
+
+	onDelete(cb) {
+		// deleteUser(id);
+		cb();
 	} 
 }
-
-
-
-//  export const showDeleteModal = (user) => {
-
-// 	btnDel.addEventListener("click", () => {
-// 		deleteUser(user.id)//.then(showUsers)
-// 		$('#deleteModal').modal('hide').find('textarea,input').val('');
-// 	})
-// }
