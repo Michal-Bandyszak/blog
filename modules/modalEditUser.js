@@ -6,10 +6,6 @@ import { changeUserData } from "./editUser.js";
         this.buttonDel = $('.editSubmit')
         this.data = null;
       }
-
-       editUser = () => {
-        $('#editUser').modal('show').find('textarea,input').val(''); 
-      }
     
       setData(user) {
         this.data = user;
@@ -17,14 +13,12 @@ import { changeUserData } from "./editUser.js";
         const surname = document.getElementById("surname");
         const email = document.getElementById("email");
         const gender = document.getElementById("gender");
-
-        console.log(name)
-        name.value = user.name;
+       
+        name.innerText = user.name
         surname.value = user.surname;
         email.value = user.email;
         gender.value = user.gender
        
-        // console.log(user.id)
       }
     
       showModal() {

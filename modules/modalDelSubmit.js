@@ -21,6 +21,5 @@ export class Modal{
 
 	onDelete() {
 		deleteUser(this.data.id)
-
 	} 
 }

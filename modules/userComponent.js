@@ -43,8 +43,9 @@ export const userComponent = (user, index) => {
     localStorage.setItem('id', user.id)
     localStorage.setItem('name', user.name)
     localStorage.setItem('surName', user.surname)
-
   })
+
+  
   
   const btnEdit = tr.querySelector('.btn-edit');
   btnEdit.addEventListener("click", () => {
@@ -53,11 +54,3 @@ export const userComponent = (user, index) => {
   })
 
 }
-// const btnDel = document.getElementById("modalButtonDelete");
-
-// btnDel.addEventListener("click", () => {
-//   funkcja()
-// })
-// const funkcja = (btnDel) => {
-//   console.log("kawa")
-// }

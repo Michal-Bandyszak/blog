@@ -1,5 +1,5 @@
 import { handleError } from "./modules/handleError.js"
-import { getHTMLElement } from "./parsehtml.js"
+import { getHTMLElement } from "./modules/parsehtml.js"
 
 const createTag = () => {
   fetch("http://localhost:8090", {
@@ -34,22 +34,22 @@ const getAllTags = () =>
 
 const tagsArray = [];
 
-const tagsComponent = (tag) => {
-  tagsArray.push(tag)
-  
-  // const node = tag.value
-  // const ul = document.getElementById('list');
-  // li.appendChild(node);
-  // ul.appendChild(li)
+const list = document.querySelector('#tags-list');
+const tagsComponent = (tag, index) => {
+const row = [
+  tag.id,
+  tag.value,
+  `<div><button class="btn-edit fas fa-edit edit-user"></button><button class="btn-del fas fa-trash"></button></div>`,
+]
+
+  const tableRow = list.insertRow(index);
+  const tableContent = row.map((value) => getHTMLElement(value));
+  const tr = list.querySelectorAll("tr")[index];
+  tableContent.forEach((cell, index) => {
+  tableRow.insertCell(index).appendChild(cell) 
+  })
 
 }
+
 
 getAllTags()
-console.log(tagsArray)
-
-const showElems = () => {
-  tagsArray.forEach(tag => console.log(tag));
-}
-showElems()
-
-
