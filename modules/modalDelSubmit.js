@@ -9,8 +9,6 @@ export class Modal{
 
 	setData(user) {
 		this.data = user;
-		
-		// console.log(user.id)
 	}
 
 	showModal() {
