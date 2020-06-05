@@ -1,8 +1,10 @@
 import { getHTMLElement } from './parsehtml.js'
 import { Modal } from './modalDelSubmit.js'
-import {showUsers} from './showUsers.js'
+import { Modaledit } from './modalEditUser.js';
+
 
 const modal = new Modal()
+const modalEdit = new Modaledit()
 
 export const userComponent = (user, index) => {
   const usersTableBody = document.querySelector("#usersTable__body")
@@ -12,7 +14,7 @@ export const userComponent = (user, index) => {
     user.surname,
     user.email,
     user.gender,
-    `<div><button class="btn-edit fas fa-edit"></button><button class="btn-del fas fa-trash"></button></div>`,
+    `<div><button class="btn-edit fas fa-edit edit-user"></button><button class="btn-del fas fa-trash"></button></div>`,
     `<div><button class="btn btn-secondary login">login</button></div>`
   ]
 
@@ -35,7 +37,6 @@ export const userComponent = (user, index) => {
       modal.hideModal()
     })
     
-
   const login = tr.querySelector(".login");
  
   login.addEventListener("click", () => {
@@ -44,10 +45,14 @@ export const userComponent = (user, index) => {
     localStorage.setItem('surName', user.surname)
 
   })
-
-  }
   
+  const btnEdit = tr.querySelector('.btn-edit');
+  btnEdit.addEventListener("click", () => {
+    modalEdit.setData(user)
+    modalEdit.showModal()
+  })
 
+}
 // const btnDel = document.getElementById("modalButtonDelete");
 
 // btnDel.addEventListener("click", () => {

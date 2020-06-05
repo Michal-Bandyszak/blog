@@ -8,6 +8,6 @@ export const deleteUser = (id) => {
 	 		"Content-Type": "application/json"
 		}
 	}).then(res => res.json())
-		.then(showUsers())
+		
 		.catch(handleError)
  }

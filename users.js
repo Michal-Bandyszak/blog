@@ -53,10 +53,4 @@ btnAddUserModal.addEventListener("click", () => {
   $('#newUser').modal('show').find('textarea,input').val('');
 });
 
-// deleteButton.addEventListener("click", () => console.log("buu"))
-// wakeDeleteModal.addEventListener("click", () => {
-//   console.log("hej")
-//  
-// })
-
 showUsers()
