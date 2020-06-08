@@ -12,11 +12,11 @@ export class Modal{
 	}
 
 	showModal() {
-		this.element.modal('show').find('textarea,input').val('');
+		this.element.modal('show').find('textarea,input');
 	}
 
 	hideModal() {
-		this.element.modal('hide').find('textarea,input').val('');
+		this.element.modal('hide').find('textarea,input');
 	}
 
 	onDelete() {

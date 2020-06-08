@@ -1,6 +1,6 @@
 import { handleError } from "./handleError.js";
 
-export const changeUserData = () => 
+export const changeUserData = (data) => 
   fetch('http://localhost:8090/v1/users/update', {
     method: 'PUT',
     headers: {

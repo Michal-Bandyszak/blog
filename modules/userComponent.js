@@ -1,6 +1,7 @@
 import { getHTMLElement } from './parsehtml.js'
 import { Modal } from './modalDelSubmit.js'
-import { Modaledit } from './modalEditUser.js';
+import Modaledit from './modalEditUser.js';
+import { showUsers } from './showUsers.js';
 
 
 const modal = new Modal()
@@ -51,6 +52,24 @@ export const userComponent = (user, index) => {
   btnEdit.addEventListener("click", () => {
     modalEdit.setData(user)
     modalEdit.showModal()
+  })
+
+  document.forms.formEdit.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const body = Object.fromEntries(new FormData(e.target));
+  
+    const data = Object.entries(body).reduce((prev, actual) => {
+      const [key, value] = actual;
+        if(key === 'gender') {
+          return { ...prev, [key]: +value }
+        };
+      
+      return { ...prev, [key]: value };
+      
+    }, {});
+    
+     modalEdit.onEdit(data);
+     $('#editUser').modal('hide').find('textarea,input').val('');
   })
 
 }

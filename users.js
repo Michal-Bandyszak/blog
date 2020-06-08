@@ -3,11 +3,7 @@ import { userComponent } from './modules/userComponent.js';
 
 const btnAddUserModal = document.getElementById("btnAddUserModal");
 const tbody = document.getElementById("usersTable__body")
-
-
-  const users = [];
-    
-
+   
 const getAllUsers = () => 
   fetch("http://localhost:8090/v1/users/get")
     .then(res => res.json())
@@ -53,26 +49,9 @@ btnAddUserModal.addEventListener("click", () => {
   $('#newUser').modal('show').find('textarea,input').val('');
 });
 
-const btnEddit = document.querySelector('.editSubmit');
-btnEddit.addEventListener("click", () => submitFormEdit(e));
+// const btnEddit = document.querySelector('.editSubmit');
+// btnEddit.addEventListener("click", () => submitFormEdit(e));
 
-// const submitFormEdit = (e) => {
-// 	e.preventDefault();
-// 	const body = Object.fromEntries(new FormData(e.target));
-// 	const data = Object.entries(body).reduce((prev, actual) => {
-// 		const [key, value] = actual;
-// 		if(key === 'gender') {
-// 			return { ...prev, [key]: +value }
-// 		};
-		
-// 		return { ...prev, [key]: value };
-		
-//   }, {});
-//   console.log(data)
-// 	  // editUser(data)
-	
-// 	$('#editUser').modal('hide').find('textarea, input').val('');
-// }
 
 const showDeleteModal = (user) => {
 	$('#deleteModal').modal('show').find('textarea,input').val('');

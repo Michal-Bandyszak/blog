@@ -1,36 +1,38 @@
 import { changeUserData } from "./editUser.js";
 
-    export class Modaledit{
+    export default class Modaledit{
       constructor(){
-        this.element = $('#editUser');
+        this.element = document.getElementById('editUser');
+        this.$element = $(this.element);
+
         this.buttonDel = $('.editSubmit')
         this.data = null;
       }
     
       setData(user) {
         this.data = user;
-        const name = document.getElementById("name");
-        const surname = document.getElementById("surname");
-        const email = document.getElementById("email");
-        const gender = document.getElementById("gender");
-       
-        name.innerText = user.name
+        const name = this.element.querySelector('input[name="name"]');
+        const surname = this.element.querySelector('input[name="surname"]');
+        const email = this.element.querySelector('input[name="email"]');
+        const gender = this.element.querySelector('input[name="gender"]');
+        name.value = user.name;
         surname.value = user.surname;
         email.value = user.email;
-        gender.value = user.gender
-       
+        gender.value = user.gender;
       }
     
       showModal() {
-        this.element.modal('show').find('textarea,input').val('');
+        this.$element.modal('show');
       }
     
       hideModal() {
-        this.element.modal('hide').find('textarea,input').val('');
+        this.$element.modal('hide');
       }
     
-      onEdit() {
-        //changeUserData()
-    
+      onEdit(data) {
+        const id = this.data.id
+        const dataWithId = {...data, id}
+       console.log(dataWithId)
+        changeUserData(dataWithId)
       } 
     }

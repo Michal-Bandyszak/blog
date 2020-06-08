@@ -21,7 +21,5 @@ const submitFormEdit = (e) => {
 		
 	}, {});
 	 const datawithId = {...data, id }
-
-
 	$('#editUser').modal('hide').find('textarea, input').val('');
 }

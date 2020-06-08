@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tags</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-  <!-- Our Custom CSS -->
+  <script src="https://kit.fontawesome.com/c7be0e60d2.js" crossorigin="anonymous"></script>
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="sidebar.css">
 </head>
 <body>
+  
   <div class="wrapper">
       <!-- Sidebar -->
       <nav id="sidebar">
@@ -17,9 +19,7 @@
           </div>
 
           <ul class="list-unstyled components">
-              <li >
-                  <a href="#homeSubmenu">Home</a>
-              </li>
+
               <li>
                   <a href="users.html">Users</a>
               </li>
@@ -31,22 +31,80 @@
               </li>
           </ul>
       </nav>
-      <table class="table table-striped mt-5">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Value</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody id="tags-list"></tbody>
-      </table>
+      <main class="container">
+        <div>
+          <button id="addTag" class="btn btn-secondary">Add tag</button> 
+        </div>
+        <table class="table table-striped mt-5">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Value</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody id="tags-list"></tbody>
+        </table>
+      </main>
   </div>
+
+  <!--Modal add Tag-->
+  <section class="modals">
+    <div class="modal fade" id="newTag" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">New Tag</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="formAdd">
+              <div class="form-row newUser__first--row">
+                <div class="form-group col-md-6">
+                  <input type="text" class="form-control" placeholder="tag" name="tag">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Create tag</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--Modal delete-->
+  <section class="modals">
+    <div id="deleteModal" class="deleteModal modal fade" role="dialog">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Are you sure you want do delete tag?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">	
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button id="modalButtonDelete" type="submit" class="btn btn-primary">Delete</button>
+              </div>				
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
   <!-- BOOTSTRAP -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-  <script type="module" src="./tags.js"></script>
+  <script type="module" src="tags.js"></script>
 </body>
 </html>
 
