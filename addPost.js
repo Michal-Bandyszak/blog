@@ -1,14 +1,13 @@
-
 const btnAdd = document.querySelector("#btnAddPost");
 const userId = localStorage.getItem('id')
 const userMail = localStorage.getItem('email');
 
-
-
 btnAdd.addEventListener("click", () => {
-  $('#newPost').modal('show').find('textarea,input').val('');
+	$('#newPost').modal('show');
+	console.log("yoyo")
 });
 
+console.log("Hello")
 
 buttonSubmit.addEventListener("click", () => submitFormEdit(e));
 
@@ -20,6 +19,6 @@ const submitFormEdit = (e) => {
 		return { ...prev, [key]: value };
 		
 	}, {});
-	 const datawithId = {...data, id }
-	$('#editUser').modal('hide').find('textarea, input').val('');
+	 
+	$('#newPost').modal('hide').find('textarea, input').val('');
 }
