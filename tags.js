@@ -82,6 +82,6 @@ document.forms.formAdd.addEventListener("submit", (e) => {
 )
 
 
-
+//Tagi powinny być wyświetlane w modalu jako np. labelki do wyboru. Muszą to być tagi te,z zakładki tags
 
 getAllTags()

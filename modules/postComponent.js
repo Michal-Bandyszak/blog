@@ -18,9 +18,7 @@ export const postComponent = (data) => {
         <p class="mt-1 mb-4 collapse" id="collapseExample" aria-expanded="false"">
            ${data.contet}
         </p>
-       
       </article>`,
-    ,
     ]
     const postDiv = document.querySelector(".posts");
     postDiv.appendChild(getHTMLElement(postBody))
