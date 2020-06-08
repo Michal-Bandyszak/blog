@@ -44,6 +44,7 @@ export const userComponent = (user, index) => {
     localStorage.setItem('id', user.id)
     localStorage.setItem('name', user.name)
     localStorage.setItem('surName', user.surname)
+    localStorage.setItem('email', user.email)
   })
 
   

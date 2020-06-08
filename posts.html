@@ -6,11 +6,12 @@
   <title>posts</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <link rel="stylesheet" href="sidebar.css">
+  <link rel="stylesheet" href="./modules/postHide.css">
 </head>
-<body>
-  <div class="wrapper">
+<body class="container-fluid">
+  <div class="wrapper ">
     <!-- Sidebar -->
-    <nav id="sidebar">
+    <nav id="sidebar" class="col-3">
         <div class="sidebar-header">
             <h3>Sidebar</h3>
         </div>
@@ -26,52 +27,52 @@
             </li>
         </ul>
     </nav>
+    <!-- <div class="col-1"><p class="logged">Logged as: </p></div> -->
+    
+    <div class="container posts">
+    </div>
     <div>
       <button id="btnAddPost" class="btn btn-secondary">Add Post</button>
     </div>
+  </div>
 
-    <section class="modals">
-      <div class="newPost modal fade" id="newPost" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">New Post</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form id="formAdd">
-                <div class="form-row newUser__first--row">
-                  <div class="form-group col-md-6">
-                    <input type="text" class="form-control" placeholder="" name="author">
+  </div>
+  <!--Modal-->
+  <section class="modals">
+        <div class="newPost modal fade" id="newPost" role="dialog">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">New Post</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="formAdd">
+                  <div class="form-row newUser__first--row">
+                    <div class="form-group col-md-6">
+                      <input type="text" class="form-control" placeholder="tags" name="tags">
+                    </div>
+                    <div class="col">
+                      <textarea class="form-control" placeholder="content" name="content"></textarea>
+                    </div> 
                   </div>
-                  <div class="form-group col-md-6">
-                    <input type="text" class="form-control" placeholder="tags" name="tags">
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary createPost">Create Post</button>
                   </div>
-                  <div class="col">
-                    <textarea type="text" class="form-control" placeholder="content" name="content">
-                  </div> 
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary">Create Post</button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-</div>
- 
- 
+  </section>
   <!-- BOOTSTRAP -->
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+  <script type="module" src="posts.js"></script>
   <script type="module" src="addPost.js"></script>
 </body>
 </html>
-
-
