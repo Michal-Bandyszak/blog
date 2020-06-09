@@ -1,12 +1,13 @@
 import { changeUserData } from "./editUser.js";
 
     export default class Modaledit{
-      constructor(){
+      constructor(editCallback){
         this.element = document.getElementById('editUser');
         this.$element = $(this.element);
 
         this.buttonDel = $('.editSubmit')
         this.data = null;
+        this.editCallback = editCallback;
       }
     
       setData(user) {
@@ -33,6 +34,6 @@ import { changeUserData } from "./editUser.js";
         const id = this.data.id
         const dataWithId = {...data, id}
        console.log(dataWithId)
-        changeUserData(dataWithId)
+        changeUserData(dataWithId, this.editCallback)
       } 
     }
