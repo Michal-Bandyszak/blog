@@ -1,4 +1,6 @@
 import { handleError } from "./modules/handleError.js";
+import { postComponent } from "./modules/postComponent.js";
+import { getAllPosts } from "./posts.js";
 
 const btnAdd = document.querySelector("#btnAddPost");
 const userId = localStorage.getItem('id')
@@ -7,6 +9,18 @@ const formAdd = document.getElementById("formAdd");
 btnAdd.addEventListener("click", () => {
 	$('#newPost').modal('show');
 });
+
+const tagsArray = [];
+const getAllTags = () => 
+fetch("http://localhost:8090/v1/tags")
+.then(res => res.json())
+.then(res => {
+	// console.log(res.data)
+	res.data.forEach(tagsArray.push(res.data))
+})
+
+getAllTags()
+console.log(tagsArray);
 
 const addPost = (data) => 
 	fetch("http://localhost:8090/v1/posts", {
@@ -37,6 +51,7 @@ const addPost = (data) =>
 				content: content
 			}
 			 addPost(post)
+			 getAllPosts()
 			 $('#newPost').modal('hide')
 		})
 			
