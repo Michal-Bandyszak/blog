@@ -52,7 +52,10 @@
                 <form id="formAdd">
                   <div class="form-row newUser__first--row">
                     <div class="form-group col-md-6">
-                      <input type="text" class="form-control" placeholder="tags" name="tags">
+                      <label for="tags">Choose a tag:</label>
+                        <select name="tags" id="tags" multiple="multiple">
+                          <!--<option value=""></option>-->
+                        </select>
                     </div>
                     <div class="col">
                       <textarea class="form-control" placeholder="content" name="content"></textarea>

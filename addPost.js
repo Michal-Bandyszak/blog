@@ -1,26 +1,37 @@
 import { handleError } from "./modules/handleError.js";
 import { postComponent } from "./modules/postComponent.js";
 import { getAllPosts } from "./posts.js";
+import { getHTMLElement } from './modules/parsehtml.js';
 
 const btnAdd = document.querySelector("#btnAddPost");
 const userId = localStorage.getItem('id')
 const userMail = localStorage.getItem('email');
 const formAdd = document.getElementById("formAdd");
+const tagInput = formAdd.querySelector("#tags");
+
 btnAdd.addEventListener("click", () => {
 	$('#newPost').modal('show');
 });
 
-const tagsArray = [];
+
 const getAllTags = () => 
 fetch("http://localhost:8090/v1/tags")
 .then(res => res.json())
 .then(res => {
-	// console.log(res.data)
-	res.data.forEach(tagsArray.push(res.data))
+	res.data.map((tag) => {
+		tagComponent(tag)
+	})
 })
 
+
+const tagComponent = (tag) => {
+const value = tag.value;
+const option = `<option value="${value}">${value}</option`
+tagInput.appendChild(getHTMLElement(option))
+}
+
 getAllTags()
-console.log(tagsArray);
+
 
 const addPost = (data) => 
 	fetch("http://localhost:8090/v1/posts", {
@@ -41,12 +52,19 @@ const addPost = (data) =>
 				return { ...prev, [key]: value };
 				
 			}, {});
-			const tags = [];
-			tags.push(data.tags.split(" "))
+		
 			
 			const content = data.content
+		
+		
+			let selectedValues = Array.from(tagInput.selectedOptions)
+        .map(option => option.value)
+
+
+			console.log(selectedValues)
+
 			const post = {
-				tags: tags[0],
+				tags: selectedValues,
 				authorID: userId,
 				content: content
 			}

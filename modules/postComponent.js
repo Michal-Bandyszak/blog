@@ -29,8 +29,13 @@ export const postComponent = (data) => {
 
     
       if(data.contet.length > 400) {
-        postDiv.appendChild(getHTMLElement(`<a role="button" class="collapsed" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Read more</a>`))
-      
+        postDiv.appendChild(getHTMLElement(
+          `<a 
+              role="button" class="collapsed"
+              data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+              aria-controls="collapseExample">Read more
+        </a>`
+        ))
       }
       
 }
