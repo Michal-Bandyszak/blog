@@ -17,29 +17,30 @@ const createTag = (tag) =>
   .then(res => res.json())
   .catch(handleError)
   
+  const list = document.querySelector('#tags-list');
+
   const getAllTags = () => 
   fetch("http://localhost:8090/v1/tags")
   .then(res => res.json())
   .then(res => {
     res.data.forEach(tagsComponent)
   })
-  
-  
+
+
   const showTags = () => {
     list.innerHTML = "";
     getAllTags()
   }
   
   
-const modal = new deleteTagModal;
-
-const list = document.querySelector('#tags-list');
+  const modal = new deleteTagModal(showTags);
+  
 const tagsComponent = (tag, index) => {
-const row = [
-  tag.id,
-  tag.value,
-  `<div><button class="btn-del fas fa-trash"></button></div>`,
-]
+    const row = [
+        tag.id,
+        tag.value,
+        `<div><button class="btn-del fas fa-trash"></button></div>`,
+    ]
 
   const tableRow = list.insertRow(index);
   const tableContent = row.map((value) => getHTMLElement(value));
@@ -55,13 +56,14 @@ const row = [
     modal.showModal();
   })
 
-  const btnModalDel = document.getElementById("modalButtonDelete")
-  btnModalDel.addEventListener("click", () => {
-      modal.onDelete()
-      modal.hideModal()
-    })
-
+  
 }
+
+const btnModalDel = document.getElementById("modalButtonDelete")
+btnModalDel.addEventListener("click", () => {
+  modal.onDelete()
+  modal.hideModal()
+  })
 
 const addTag = document.getElementById("addTag");
 addTag.addEventListener("click", () => {
@@ -84,4 +86,4 @@ document.forms.formAdd.addEventListener("submit", (e) => {
 
 //Tagi powinny być wyświetlane w modalu jako np. labelki do wyboru. Muszą to być tagi te,z zakładki tags
 
-getAllTags()
+showTags()

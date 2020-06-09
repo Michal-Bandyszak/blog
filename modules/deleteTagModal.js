@@ -1,10 +1,11 @@
 import { deleteTag } from './deleteTag.js'
 
 export  class deleteTagModal {
-	constructor(){
+	constructor(deleteCallback){
 		this.element = $('#deleteModal');
 		this.buttonDel = $('#modalButtonDelete')
 		this.data = null;
+		this.deleteCallback = deleteCallback;
 	}
 
   setData(tag) {
@@ -23,7 +24,6 @@ export  class deleteTagModal {
 	onDelete() {
     const data = {id: ""}
     data.id = this.data.id
-    deleteTag(data)
-    
+		deleteTag(data, this.deleteCallback)
 	} 
 }
