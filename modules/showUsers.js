@@ -1,4 +1,5 @@
 import { userComponent } from "./userComponent.js"
+import { handleError } from "./handleError.js"
 const tbody = document.getElementById("usersTable__body")
 
 const getAllUsers = () => {
