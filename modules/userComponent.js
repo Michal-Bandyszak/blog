@@ -4,8 +4,8 @@ import Modaledit from './modalEditUser.js';
 import { showUsers } from './showUsers.js';
 
 
-const modal = new Modal()
-const modalEdit = new Modaledit()
+const modal = new Modal(showUsers)
+const modalEdit = new Modaledit(showUsers)
 
 export const userComponent = (user, index) => {
   const usersTableBody = document.querySelector("#usersTable__body")
@@ -32,45 +32,46 @@ export const userComponent = (user, index) => {
     modal.showModal();
   })
 
-  const btnDel = document.getElementById("modalButtonDelete")
-  btnDel.addEventListener("click", () => {
-      modal.onDelete()
-      modal.hideModal()
-    })
-    
   const login = tr.querySelector(".login");
  
   login.addEventListener("click", () => {
+    alert("Logged in!")
     localStorage.setItem('id', user.id)
     localStorage.setItem('name', user.name)
     localStorage.setItem('surName', user.surname)
     localStorage.setItem('email', user.email)
+   
   })
 
-  
-  
   const btnEdit = tr.querySelector('.btn-edit');
   btnEdit.addEventListener("click", () => {
     modalEdit.setData(user)
     modalEdit.showModal()
   })
 
-  document.forms.formEdit.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const body = Object.fromEntries(new FormData(e.target));
-  
-    const data = Object.entries(body).reduce((prev, actual) => {
-      const [key, value] = actual;
-        if(key === 'gender') {
-          return { ...prev, [key]: +value }
-        };
-      
-      return { ...prev, [key]: value };
-      
-    }, {});
-    
-     modalEdit.onEdit(data);
-     $('#editUser').modal('hide').find('textarea,input').val('');
-  })
-
 }
+
+const btnDel = document.getElementById("modalButtonDelete")
+btnDel.addEventListener("click", () => {
+    modal.onDelete()
+    modal.hideModal()
+  }
+)
+
+document.forms.formEdit.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const body = Object.fromEntries(new FormData(e.target));
+
+  const data = Object.entries(body).reduce((prev, actual) => {
+    const [key, value] = actual;
+      if(key === 'gender') {
+        return { ...prev, [key]: +value }
+      };
+    
+    return { ...prev, [key]: value };
+    
+  }, {});
+  
+   modalEdit.onEdit(data, showUsers);
+   $('#editUser').modal('hide').find('textarea,input').val('');
+})

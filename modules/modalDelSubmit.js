@@ -1,10 +1,11 @@
 import { deleteUser } from './deleteUser.js';
 
 export class Modal{
-	constructor(){
+	constructor(deleteCallback){
 		this.element = $('#deleteModal');
 		this.buttonDel = $('#modalButtonDelete')
 		this.data = null;
+		this.deleteCallback = deleteCallback;
 	}
 
 	setData(user) {
@@ -20,6 +21,6 @@ export class Modal{
 	}
 
 	onDelete() {
-		deleteUser(this.data.id)
+		deleteUser(this.data.id, this.deleteCallback)
 	} 
 }

@@ -1,15 +1,15 @@
 import { handleError } from './modules/handleError.js';
 import { userComponent } from './modules/userComponent.js';
-
+import { showUsers } from './modules/showUsers.js';
 const btnAddUserModal = document.getElementById("btnAddUserModal");
 const tbody = document.getElementById("usersTable__body")
    
-const getAllUsers = () => 
-  fetch("http://localhost:8090/v1/users/get")
-    .then(res => res.json())
-    .then(res => {
-      res.data.forEach(userComponent)
-    }).catch(handleError)
+// const getAllUsers = () => 
+//   fetch("http://localhost:8090/v1/users/get")
+//     .then(res => res.json())
+//     .then(res => {
+//       res.data.forEach(userComponent)
+//     }).catch(handleError)
   
 
 // users.forEach(userComponent(user, index))
@@ -23,10 +23,10 @@ const addUser = (user) =>
 	}).then(res => res.json())
 		.catch(handleError);
 
-  const showUsers = () => {
-    tbody.innerHTML = "";
-    getAllUsers()
-  }
+  // const showUsers = () => {
+  //   tbody.innerHTML = "";
+  //   getAllUsers()
+  // }
 
   document.forms.formAdd.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -52,7 +52,6 @@ btnAddUserModal.addEventListener("click", () => {
 // const btnEddit = document.querySelector('.editSubmit');
 // btnEddit.addEventListener("click", () => submitFormEdit(e));
 
-
 const showDeleteModal = (user) => {
 	$('#deleteModal').modal('show').find('textarea,input').val('');
 	const btnDel = document.querySelector("#modalButtonDelete");
@@ -62,8 +61,6 @@ const showDeleteModal = (user) => {
 		$('#deleteModal').modal('hide').find('textarea,input').val('');
 	})
 }
-
-
 
 
 showUsers()
