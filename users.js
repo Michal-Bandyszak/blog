@@ -4,15 +4,6 @@ import { showUsers } from './modules/showUsers.js';
 const btnAddUserModal = document.getElementById("btnAddUserModal");
 const tbody = document.getElementById("usersTable__body")
    
-// const getAllUsers = () => 
-//   fetch("http://localhost:8090/v1/users/get")
-//     .then(res => res.json())
-//     .then(res => {
-//       res.data.forEach(userComponent)
-//     }).catch(handleError)
-  
-
-// users.forEach(userComponent(user, index))
 const addUser = (user) => 
   fetch("http://localhost:8090/v1/users/add", {
     method: "POST",
@@ -22,11 +13,6 @@ const addUser = (user) =>
     body: JSON.stringify(user),
 	}).then(res => res.json())
 		.catch(handleError);
-
-  // const showUsers = () => {
-  //   tbody.innerHTML = "";
-  //   getAllUsers()
-  // }
 
   document.forms.formAdd.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -41,6 +27,7 @@ const addUser = (user) =>
       return { ...prev, [key]: value };
       
     }, {});
+    
      addUser(data).then(showUsers)
      $('#newUser').modal('hide').find('textarea,input').val('');
   })

@@ -33,7 +33,6 @@ import { changeUserData } from "./editUser.js";
       onEdit(data) {
         const id = this.data.id
         const dataWithId = {...data, id}
-       console.log(dataWithId)
         changeUserData(dataWithId, this.editCallback)
       } 
     }
